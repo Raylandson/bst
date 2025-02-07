@@ -3,10 +3,8 @@
 
 typedef struct Node {
     int value;
-    int bf;
     struct Node* right;
     struct Node* left;
-
 } Node;
 
 typedef Node* Tree;
@@ -21,6 +19,6 @@ void inOrderReverse(Tree root);
 void posOrder(Tree root);
 int treeHeight(Tree root);
 int leafQuantity(Tree root);
-void findValue(Tree root, int sValue, int *found);
+void findValue(Tree root, int sValue);
 
 #endif

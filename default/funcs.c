@@ -8,7 +8,6 @@ Tree insert(Tree root, int nValue){
         Tree newRoot = (Tree)malloc(sizeof(Node));
         newRoot->left = NULL;
         newRoot->right = NULL;
-        newRoot->bf = 0;
         newRoot->value = nValue;
         return newRoot;
     }
@@ -18,9 +17,9 @@ Tree insert(Tree root, int nValue){
         root->right = insert(root->right, nValue);
     } else if (nValue < root->value){
         root->left = insert(root->left, nValue);
-    }else {
-        return root;
     }
+    
+    return root;
         
 }
 
@@ -109,7 +108,7 @@ int max(int a, int b){
 
 
 int treeHeight(Tree root){
-    if(root == NULL) return 0;
+    if(root == NULL) return -1;
 
     int leftHeight = treeHeight(root->left);
     int rightHeight = treeHeight(root->right);
@@ -127,7 +126,7 @@ int leafQuantity(Tree root){
     return l + r;
 }
 
-void findValue2(Tree root, int sValue){
+void findValue(Tree root, int sValue){
     Tree auxRoot = root;
     // find the value
     while (1)
@@ -142,7 +141,8 @@ void findValue2(Tree root, int sValue){
             break;
         }
     }
-    Tree auxRoot = root;
+
+    auxRoot = root;
     
     while(auxRoot != NULL){
         printf("[%d]", auxRoot->value);

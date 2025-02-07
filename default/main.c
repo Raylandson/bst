@@ -9,7 +9,7 @@ int main(int argc, char * argv[]) {
     //Usando um While true para fazer um menu com switch
     while(1) {
         int opcao;
-        int valor, aux, aux2;
+        int valor, aux;
         scanf("%d", &opcao);
         switch(opcao) {
             //Inserir
@@ -26,28 +26,33 @@ int main(int argc, char * argv[]) {
             //inorder
                 inOrder(arvore);
                 printf("\n");
+                break;
             case 4:
             //posorder
                 posOrder(arvore);
                 printf("\n");
+                break;
             case 5:
             //inorder
                 inOrderReverse(arvore);
                 printf("\n");
+                break;
             case 6:
             //height
-                printf("[%d]", treeHeight(arvore));
+                printf("%d", treeHeight(arvore));
                 printf("\n");
+                break;
             case 7:
             //height
-                printf("[%d]", leafQuantity(arvore));
+                printf("%d", leafQuantity(arvore));
                 printf("\n");
-                printf("\n");
+                break;
             case 8:
             //height
                 scanf("%d", &valor);
-                findValue2(arvore, valor);
+                findValue(arvore, valor);
                 printf("\n");
+                break;
             case 9:
             //Remover
                 scanf("%d", &valor);
@@ -56,6 +61,7 @@ int main(int argc, char * argv[]) {
             case 99:
             //Sair
                 exit(0);
+                break;
         }    
     }
  }
