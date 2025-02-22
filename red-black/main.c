@@ -5,15 +5,17 @@
 int main(int argc, char * argv[]) {
     //Declarar uma variável do tipo árvore e inicializar como uma árvore vazia
     Tree arvore = NULL;
-    insert(&arvore, 25);
-    preOrder(arvore);
-    insert(&arvore, 22);
-    preOrder(arvore);
-    insert(&arvore, 23);
-    preOrder(arvore);
+    // insert(&arvore, 25);
+    // preOrder(arvore);
+    // insert(&arvore, 22);
+    // preOrder(arvore);
+    // insert(&arvore, 23);
+    // preOrder(arvore);
     
     //Usando um While true para fazer um menu com switch
-    return 0;
+    // return 0;
+
+    // erro com 2 20 30 25 22
     while(1) {
         int opcao;
         int valor;
