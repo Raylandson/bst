@@ -42,6 +42,7 @@ void insert(MainTree root, int value){
     while(color(father(aux)) == RED && color(aux) == RED){
       //case no 1, recoloring
       if(color(uncle(aux)) == RED){
+        printf("recolorindo\n");
         uncle(aux)->color = BLACK;
         father(aux)->color = BLACK;
         if(grandFather(aux) != NULL) grandFather(aux)->color = RED;
@@ -70,7 +71,10 @@ void insert(MainTree root, int value){
           break;
         }
         
+
         if(!rightChild(aux) && !rightChild(father(aux))){
+          printf("simple right rotation\n");
+
           simpleRightRotation(aux, root);
           father(aux)->color = BLACK;
           sibling(aux)->color = RED;
@@ -153,32 +157,32 @@ int rightChild(Tree root){
 }
 
 
+/*
+x
+/   \
+y     t3
+/   \
+t1    t2
+
+y
+/    \
+t1     x 
+/   \
+t2   t3
+
+*/
+//calcula os nos
+
 void simpleRightRotation(Tree root, MainTree mainRoot){
-    /*
-             x
-           /   \
-          y     t3
-        /   \
-       t1    t2
-
-              y
-           /    \
-          t1     x 
-               /   \
-              t2   t3
-            
-    */
-    //calcula os nos
-
     Tree nodeFa = father(root);
     Tree nodeGf = grandFather(root);
-    Tree nodeSi = sibling(root);
+    Tree gfFather = father(nodeGf);
+    // Tree nodeSi = sibling(root);
     
     if(nodeFa == NULL || nodeGf == NULL) return;
     
-    Tree gfFather = father(nodeGf);
     if(gfFather != NULL){
-      if(rightChild(gfFather)){
+      if(rightChild(nodeGf)){
         gfFather->right = nodeFa;
       } else{
         gfFather->left = nodeFa;
@@ -187,11 +191,19 @@ void simpleRightRotation(Tree root, MainTree mainRoot){
       *mainRoot = nodeFa;
     }
     
+    Tree nodeFaRight = nodeFa->right;
     nodeFa->right = nodeGf;
+
     nodeGf->father = nodeFa;
+
     nodeFa->father = gfFather;
-    nodeGf->left = nodeSi;
-    if(nodeSi != NULL) nodeSi->father = nodeGf;
+    // nodeGf->left = nodeSi;
+    nodeGf->left = nodeFaRight; 
+    // if(nodeSi != NULL) nodeSi->father = nodeGf;
+    
+    if (nodeFaRight != NULL) {
+      nodeFaRight->father = nodeGf;
+    }
 
     return;
 }
